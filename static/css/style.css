@@ -1,0 +1,60 @@
+:root {
+    --bg-dark: #0a0a0c;
+    --accent-blue: #0dcaf0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR Styling */
+.navbar {
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(13, 202, 240, 0.1);
+}
+
+/* HERO SECTION with Background Image */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070') no-repeat center center/cover;
+}
+
+/* FEATURE CARDS */
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+    background: rgba(13, 202, 240, 0.05);
+}
+
+/* UPLOAD SECTION (Glassmorphism) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.drop-zone {
+    border: 2px dashed rgba(13, 202, 240, 0.4);
+    border-radius: 20px;
+    padding: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.drop-zone:hover {
+    background: rgba(13, 202, 240, 0.1);
+    border-color: var(--accent-blue);
+}

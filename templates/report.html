@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionCore | Diagnostic Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-dark text-white py-5">
+    <div class="container" id="report-content">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-secondary bg-opacity-25 rounded border border-info">
+            <div>
+                <h1 class="text-info fw-bold mb-0">VISIONCORE <span class="text-white">AI REPORT</span></h1>
+                <p class="mb-0 opacity-75">Industrial Automated Optical Inspection</p>
+            </div>
+            <button onclick="generatePDF()" class="btn btn-info btn-lg fw-bold" data-html2canvas-ignore>DOWNLOAD PDF</button>
+        </div>
+
+        <div class="row g-2 mb-4 text-center">
+            <div class="col-md-4">
+                <div class="p-2 border border-secondary rounded bg-black">
+                    <small class="text-info d-block text-uppercase">Scan Duration</small>
+                    <span class="fw-bold">{{ data.meta.duration }}s</span>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="p-2 border border-secondary rounded bg-black">
+                    <small class="text-info d-block text-uppercase">Reference Template</small>
+                    <span class="fw-bold">{{ data.meta.template }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 text-center mb-5">
+            <div class="col-md-4">
+                <div class="card bg-black border-secondary p-2 h-100">
+                    <p class="text-info small fw-bold">1. ORIGINAL BOARD</p>
+                    <div class="d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                        <img src="{{ url_for('static', filename=data.orig) }}" class="img-fluid rounded" alt="Original PCB">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-black border-warning p-2 h-100">
+                    <p class="text-warning small fw-bold">2. SUBTRACTION MAP</p>
+                    <div class="d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                        <img src="{{ url_for('static', filename=data.sub) }}" class="img-fluid rounded" alt="Subtraction Map">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-black border-danger p-2 h-100">
+                    <p class="text-danger small fw-bold">3. AI DETECTION (MATCHED)</p>
+                    <div class="d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                        <img src="{{ url_for('static', filename=data.final) }}" class="img-fluid rounded" alt="AI Detection">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if data.count > 0 %}
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="p-3 bg-black border border-secondary rounded">
+                    <h6 class="text-info mb-3">DEFECT DISTRIBUTION</h6>
+                    <div class="d-flex flex-wrap gap-3">
+                        {% for type, count in data.stats.items() %}
+                        <div class="px-3 py-1 bg-secondary bg-opacity-25 border border-info rounded">
+                            <span class="text-uppercase small">{{ type }}:</span> 
+                            <span class="fw-bold text-info">{{ count }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="bg-secondary bg-opacity-10 p-4 rounded border border-secondary">
+            <h3 class="mb-4">Analysis Findings: <span class="text-info">{{ data.count }} Anomalies Detected</span></h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle">
+                    <thead class="table-info">
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Severity</th>
+                            <th>Coordinates (X, Y)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data.list %}
+                        <tr>
+                            <td class="fw-bold">{{ item.id }}</td>
+                            <td class="text-info fw-bold">{{ item.type.replace('_', ' ') }}</td>
+                            <td>
+                                <span class="badge {% if item.severity == 'CRITICAL' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                                    {{ item.severity }}
+                                </span>
+                            </td>
+                            <td class="font-monospace small text-secondary">{{ item.coords }}</td>
+                            <td><span class="badge border border-danger text-danger">ACTION REQUIRED</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5 mb-5" data-html2canvas-ignore>
+        <a href="/" class="btn btn-outline-info px-5 fw-bold">SCAN NEW BOARD</a>
+    </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('report-content');
+            const options = {
+                margin: 0.3,
+                filename: 'VisionCore_AI_Report.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, backgroundColor: '#212529' },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+            };
+            html2pdf().set(options).from(element).save();
+        }
+    </script>
+</body>
+</html>
