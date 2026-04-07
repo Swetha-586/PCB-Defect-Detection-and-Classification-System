@@ -57,12 +57,11 @@ The system operates through a **four-stage hybrid process**:
 * **Output:** High-precision results visualized through annotated bounding boxes and categorized prediction logs within the web dashboard.
 
 ---
-
-### 🖥️ User Interface & Output
+### 🖥️ User Interface & Dashboard
 The **VisionCore AI** dashboard provides real-time visual verification, allowing operators to monitor the hybrid pipeline from raw image upload to final defect classification.
 
 <p align="center">
-  <img src="Screenshot 2026-03-26 141144.png" width="900" alt="VisionCore AI Interface">
+  <img src="Screenshot%202026-04-03%20141144.png" width="900" alt="VisionCore AI Interface">
   <br>
   <i>Figure 1: Main Inspection Dashboard with Prediction Logs and Confidence Scores.</i>
 </p>
@@ -72,12 +71,13 @@ The **VisionCore AI** dashboard provides real-time visual verification, allowing
 ### 🔍 Detection Pipeline Outputs
 The following images demonstrate the step-by-step transformation of a raw PCB image through our **Hybrid Pipeline**.
 
-| Difference Analysis | 3. Final AI Detection |
+| 1. Difference Analysis | 2. Final AI Detection |
 | :---: | :---: |
-| ![Subtraction](Screenshot 2026-03-26 171854.png) | ![Final Output](Screenshot 2026-03-26 140917.png) |
-| *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling* |
+| ![Subtraction](Screenshot%202026-03-31%20171854.png) | ![Final Output](Screenshot%202026-04-03%20140917.png) |
+| *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling*|
 
 ---
+
 ### 📊 Training Accuracy & Metrics
 We validated the **EfficientNet-B4** model using standard deep learning metrics to ensure zero-miss industrial reliability.
 
