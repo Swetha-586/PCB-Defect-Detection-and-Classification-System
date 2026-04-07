@@ -73,12 +73,11 @@ The **VisionCore AI** dashboard provides real-time visual verification, allowing
 The following images demonstrate the step-by-step transformation of a raw PCB image through our **Hybrid Pipeline**.
 
 | Difference Analysis | 3. Final AI Detection |
-|  :---: | :---: |
-|  ![Subtraction](Screenshot 2026-03-26 171854.png) | ![Final Output](Screenshot 2026-03-26 140917.png) |
-| *Aligning Test board to Golden Template* | *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling* |
+| :---: | :---: |
+| ![Subtraction](Screenshot 2026-03-26 171854.png) | ![Final Output](Screenshot 2026-03-26 140917.png) |
+| *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling* |
 
 ---
-
 ### 📊 Training Accuracy & Metrics
 We validated the **EfficientNet-B4** model using standard deep learning metrics to ensure zero-miss industrial reliability.
 
