@@ -62,7 +62,7 @@ The system operates through a **four-stage hybrid process**:
 The **VisionCore AI** dashboard provides real-time visual verification, allowing operators to monitor the hybrid pipeline from raw image upload to final defect classification.
 
 <p align="center">
-  <img src="static/ui_screenshot.png" width="900" alt="VisionCore AI Interface">
+  <img src="Screenshot 2026-03-26 141144.png" width="900" alt="VisionCore AI Interface">
   <br>
   <i>Figure 1: Main Inspection Dashboard with Prediction Logs and Confidence Scores.</i>
 </p>
@@ -72,9 +72,9 @@ The **VisionCore AI** dashboard provides real-time visual verification, allowing
 ### 🔍 Detection Pipeline Outputs
 The following images demonstrate the step-by-step transformation of a raw PCB image through our **Hybrid Pipeline**.
 
-| 1. Image Registration | 2. Difference Analysis | 3. Final AI Detection |
-| :---: | :---: | :---: |
-| ![Registration](Image_subtraction_Outputs/aligned_output.png) | ![Subtraction](Image_subtraction_Outputs/diff_mask.png) | ![Final Output](static/final_prediction.png) |
+| Difference Analysis | 3. Final AI Detection |
+|  :---: | :---: |
+|  ![Subtraction](Screenshot 2026-03-26 171854.png) | ![Final Output](Screenshot 2026-03-26 140917.png) |
 | *Aligning Test board to Golden Template* | *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling* |
 
 ---
