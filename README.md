@@ -1,4 +1,5 @@
-🔍 VisionCore AI: Hybrid PCB Defect Detection System
+🔍 VisionCore AI: 
+Hybrid PCB Defect Detection System
 VisionCore AI is an industrial-grade automated inspection system designed to replace manual PCB review with a high-speed, intelligent pipeline. By merging Classical Computer Vision (OpenCV) for sub-pixel localization and EfficientNet-B4 Deep Learning (PyTorch) for classification, the system identifies manufacturing flaws in seconds with superior reliability.
 
 🛠️ Problem Statement
