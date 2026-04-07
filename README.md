@@ -58,5 +58,34 @@ The system operates through a **four-stage hybrid process**:
 
 ---
 
+### 🖥️ User Interface & Output
+The **VisionCore AI** dashboard provides real-time visual verification, allowing operators to monitor the hybrid pipeline from raw image upload to final defect classification.
+
+<p align="center">
+  <img src="static/ui_screenshot.png" width="900" alt="VisionCore AI Interface">
+  <br>
+  <i>Figure 1: Main Inspection Dashboard with Prediction Logs and Confidence Scores.</i>
+</p>
+
+---
+
+### 🔍 Detection Pipeline Outputs
+The following images demonstrate the step-by-step transformation of a raw PCB image through our **Hybrid Pipeline**.
+
+| 1. Image Registration | 2. Difference Analysis | 3. Final AI Detection |
+| :---: | :---: | :---: |
+| ![Registration](Image_subtraction_Outputs/aligned_output.png) | ![Subtraction](Image_subtraction_Outputs/diff_mask.png) | ![Final Output](static/final_prediction.png) |
+| *Aligning Test board to Golden Template* | *Isolating anomalies via subtraction* | *Bounding boxes & Defect labeling* |
+
+---
+
+### 📊 Training Accuracy & Metrics
+We validated the **EfficientNet-B4** model using standard deep learning metrics to ensure zero-miss industrial reliability.
+
+| Accuracy Curve | Confusion Matrix |
+| :---: | :---: |
+| ![Accuracy Curve](accuracy_curve.png) | ![Confusion Matrix](confusion_matrix.png) |
+| *Consistency over 10+ Epochs* | *Precision across all 6 defect classes* |
+
 ### 🤝 Acknowledgments
 We express our sincere gratitude to our mentor for her invaluable guidance, technical expertise, and constant support throughout the development of **VisionCore AI**. This project stands as a testament to the transformative power of Hybrid AI in solving critical industrial challenges.
